@@ -25,39 +25,39 @@ NotesLib is a comprehensive, full-stack document management web application desi
 ## 📸 Screenshots
 
 ### Home Dashboard & Notifications
-![Home Dashboard](src/app/assets/Screen-Shots/Home-Page.png)
+![Home Dashboard](src/assets/Screen-Shots/Home-Page.png)
 
 ### Search & Request Access
-![Search Notes](src/app/assets/Screen-Shots/Search-Page.png)
+![Search Notes](src/assets/Screen-Shots/Search-Page.png)
 
 ### Add Notes Page
-![Add Notes](src/app/assets/Screen-Shots/Add-Notes-Page.png)
+![Add Notes](src/assets/Screen-Shots/Add-Notes-Page.png)
 
 ### Multi-Step Folder Creation
-![Create Note 1](src/app/assets/Screen-Shots/Create-Note-1-of-5.png)
+![Create Note 1](src/assets/Screen-Shots/Create-Note-1-of-5.png)
 
-![Create Note 2](src/app/assets/Screen-Shots/Create-Note-2-of-5.png)
+![Create Note 2](src/assets/Screen-Shots/Create-Note-2-of-5.png)
 
-![Create Note 3](src/app/assets/Screen-Shots/Create-Note-3-of-5.png)
+![Create Note 3](src/assets/Screen-Shots/Create-Note-3-of-5.png)
 
-![Create Note 4](src/app/assets/Screen-Shots/Create-Note-4-of-5.png)
+![Create Note 4](src/assets/Screen-Shots/Create-Note-4-of-5.png)
 
-![Create Note 5](src/app/assets/Screen-Shots/Create-Note-5-of-5.png)
+![Create Note 5](src/assets/Screen-Shots/Create-Note-5-of-5.png)
 
 ### PDF Viewer & Upload
-![PDF Viewer](src/app/assets/Screen-Shots/PDF-View.png)
+![PDF Viewer](src/assets/Screen-Shots/PDF-View.png)
 
 ### Login Screen
-![Login Screen](src/app/assets/Screen-Shots/Login-Screen.png)
+![Login Screen](src/assets/Screen-Shots/Login-Screen.png)
 
 ### SignUp Screen
-![SignUp Screen](src/app/assets/Screen-Shots/SignUp-Screen.png)
+![SignUp Screen](src/assets/Screen-Shots/SignUp-Screen.png)
 
 ### Verify Screen
-![Verify Screen](src/app/assets/Screen-Shots/Verify-Screen.png)
+![Verify Screen](src/assets/Screen-Shots/Verify-Screen.png)
 
 ### Verify Success
-![Verify Success](src/app/assets/Screen-Shots/verification-success.png)
+![Verify Success](src/assets/Screen-Shots/verification-success.png)
 
 ## ⚙️ Local Setup & Installation
 
