@@ -1,0 +1,76 @@
+.notes-section {
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color); /* Colors the headings instead of leaving them grey */
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.note-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  
+  /* The Magic Color Pop */
+  border: 1px solid #eaeaea;
+  border-left: 6px solid var(--primary-color); 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(109, 113, 46, 0.15); /* Olive-tinted shadow */
+  border-color: var(--primary-color);
+}
+
+.note-card.shared {
+  background-color: #fffaf0; /* A very soft warm/floral white */
+  border-left: 6px solid #e09f3e; /* Warm amber/gold accent */
+  border-color: #f3e5d0;
+}
+
+.note-card.shared:hover {
+  box-shadow: 0 8px 24px rgba(224, 159, 62, 0.15);
+  border-color: #e09f3e;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.delete-btn {
+  background: #f4f5ee; /* Light olive tint */
+  color: #8c905e;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  transition: all 0.2s;
+}
+
+.delete-btn:hover {
+ background: #ffeaea;
+  color: var(--error-color);
+}
+.empty-state {
+  color: #888;
+  font-size: 15px;
+  font-style: italic;
+  padding: 12px 0;
+}

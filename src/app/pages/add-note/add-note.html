@@ -1,0 +1,184 @@
+<div class="header-action">
+  <h2 class="section-title">Add Notes</h2>
+</div>
+
+<!-- Main Page View -->
+<div class="notes-section">
+  <div class="section-header">
+    <h3 class="subsection-title">Recently Added</h3>
+    <button class="text-btn" (click)="viewAllNotes()">See All Notes</button>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading-state">Loading recent notes...</div>
+  } @else if (recentNotes.length === 0) {
+    <div class="empty-state">
+      <mat-icon class="large-icon">note_add</mat-icon>
+      <p>You haven't created any notes yet.</p>
+    </div>
+  } @else {
+    <div class="grid-container">
+      @for (note of recentNotes; track note.$id) {
+        <div class="note-card" (click)="openNote(note)">
+          <div class="card-content">
+            <span class="card-title">{{ note.name }}</span>
+            <span class="card-date">Added {{ note.createdAt | date:'mediumDate' }}</span>
+          </div>
+          <mat-icon class="forward-icon">arrow_forward_ios</mat-icon>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- Floating Action Button -->
+<button class="fab" (click)="openDialog()" aria-label="Add Note">
+  <mat-icon>add</mat-icon>
+</button>
+
+<!-- Multi-Step Overlay Dialog -->
+@if (showDialog) {
+  <div class="dialog-backdrop" (click)="closeDialog()">
+    <div class="dialog-container" (click)="$event.stopPropagation()">
+      
+      <div class="dialog-header">
+        <h2>Create New Note</h2>
+        <button class="close-btn" (click)="closeDialog()" [disabled]="isSaving"><mat-icon>close</mat-icon></button>
+      </div>
+
+      <div class="dialog-body">
+        <!-- STEP 1: Note Details -->
+        @if (currentStep === 1) {
+          <div class="step-content">
+            <h3>Step 1: Note Details</h3>
+            <div class="form-group">
+              <label>Note Collection Name</label>
+              <input type="text" [(ngModel)]="noteName" placeholder="e.g. B.Sc IT Semester 1" class="form-input">
+            </div>
+            <div class="form-group">
+              <label>Number of Subjects</label>
+              <input type="number" [(ngModel)]="numSubjects" min="1" placeholder="e.g. 5" class="form-input">
+            </div>
+          </div>
+        }
+
+        <!-- STEP 2: Subject Details -->
+        @if (currentStep === 2) {
+          <div class="step-content">
+            <h3>Step 2: Subject Details</h3>
+            <div class="scrollable-content">
+              @for (subject of subjects; track $index) {
+                <div class="form-section">
+                  <h4>Subject {{ formatNumber($index + 1) }}</h4>
+                  <div class="form-group">
+                    <label>Subject Name</label>
+                    <input type="text" [(ngModel)]="subject.name" placeholder="e.g. Data Structures" class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label>Number of Units</label>
+                    <input type="number" [(ngModel)]="subject.numUnits" min="1" placeholder="e.g. 3" class="form-input">
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- STEP 3: Unit Details -->
+        @if (currentStep === 3) {
+          <div class="step-content">
+            <h3>Step 3: Chapters per Unit</h3>
+            <div class="scrollable-content">
+              @for (subject of subjects; track $index) {
+                <div class="form-section subject-group">
+                  <h4>{{ subject.name }}</h4>
+                  @for (unit of subject.units; track $index) {
+                    <div class="form-group row-group">
+                      <label>{{ unit.name }} Chapters:</label>
+                      <input type="number" [(ngModel)]="unit.numChapters" min="1" placeholder="Qty" class="form-input small-input">
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- STEP 4: Chapter Names -->
+        @if (currentStep === 4) {
+          <div class="step-content">
+            <h3>Step 4: Chapter Names</h3>
+            <div class="scrollable-content">
+              @for (subject of subjects; track $index) {
+                <div class="subject-block">
+                  <h4 class="sticky-header">{{ subject.name }}</h4>
+                  @for (unit of subject.units; track $index) {
+                    <div class="form-section unit-group">
+                      <h5>{{ unit.name }}</h5>
+                      @for (chapter of unit.chapters; track chapIndex; let chapIndex = $index) {
+                        <div class="form-group">
+                          <label>Chapter {{ formatNumber(chapIndex + 1) }} Name</label>
+                          <input type="text" [(ngModel)]="chapter.name" placeholder="Chapter name" class="form-input">
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- STEP 5: Review -->
+        @if (currentStep === 5) {
+          <div class="step-content">
+            <h3>Step 5: Review Hierarchy</h3>
+            @if (saveError) {
+              <div class="error-banner">{{ saveError }}</div>
+            }
+            <div class="scrollable-content review-box">
+              <h4 class="review-title">📁 {{ noteName }}</h4>
+              <ul class="tree-view">
+                @for (subject of subjects; track $index) {
+                  <li>
+                    <strong>📘 {{ subject.name }}</strong>
+                    <ul>
+                      @for (unit of subject.units; track $index) {
+                        <li>
+                          <em>{{ unit.name }}</em>
+                          <ul>
+                            @for (chapter of unit.chapters; track chapIndex; let chapIndex = $index) {
+                              <li>📄 Chapter {{ formatNumber(chapIndex + 1) }}: {{ chapter.name }}</li>
+                            }
+                          </ul>
+                        </li>
+                      }
+                    </ul>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Dialog Footer / Controls -->
+      <div class="dialog-footer">
+        <div class="step-indicator">Step {{ currentStep }} of 5</div>
+        
+        <div class="footer-buttons">
+          <button class="btn secondary-btn" (click)="prevStep()" [disabled]="currentStep === 1 || isSaving">Back</button>
+          
+          @if (currentStep < 5) {
+            <button class="btn primary-btn" (click)="nextStep()">Next</button>
+          } @else {
+            <button class="btn primary-btn" (click)="submitNote()" [disabled]="isSaving">
+              {{ isSaving ? 'Saving...' : 'Done' }}
+            </button>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+}

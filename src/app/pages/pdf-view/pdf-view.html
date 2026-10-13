@@ -1,0 +1,54 @@
+<div class="header-action">
+  <button class="back-btn" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon> Back
+  </button>
+</div>
+
+@if (isLoading) {
+  <div class="loading-state">Loading Documents...</div>
+} @else {
+  <div class="notes-section">
+    <h2 class="section-title">Documents</h2>
+
+    @if (breadcrumb.length > 0) {
+      <div class="breadcrumb">
+        @for (step of breadcrumb; track $index; let last = $last) {
+          <span [class.active-step]="last">{{ step }}</span>
+          @if (!last) { <span class="separator"> / </span> }
+        }
+      </div>
+    }
+
+    @if (isUploading) {
+      <div class="loading-state" style="color: var(--primary-color);">
+        Uploading PDF... Please wait.
+      </div>
+    }
+    
+    <div class="grid-container">
+      @for (pdf of pdfs; track pdf.$id) {
+        <div class="note-card pdf-card" (click)="openPdf(pdf.fileUrl)">
+          <div class="pdf-info">
+            <mat-icon class="pdf-icon">picture_as_pdf</mat-icon>
+            <span class="card-title">{{ pdf.name }}</span>
+          </div>
+          <button class="delete-btn" (click)="deletePdf(pdf, $event)" aria-label="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      } @empty {
+        @if (!isUploading) {
+          <p class="empty-state">No PDFs uploaded to this chapter yet.</p>
+        }
+      }
+    </div>
+  </div>
+}
+
+<!--  Hidden file input -->
+<input type="file" id="pdf-upload" accept="application/pdf" style="display: none;" (change)="onFileSelected($event)">
+
+<!--  Floating Action Button -->
+<button class="fab" (click)="triggerFileInput()" aria-label="Upload PDF">
+  <mat-icon>add</mat-icon>
+</button>

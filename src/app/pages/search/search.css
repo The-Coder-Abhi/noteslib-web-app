@@ -1,0 +1,170 @@
+.search-header {
+  margin-bottom: 40px;
+}
+
+.section-title { 
+  font-size: 28px; 
+  font-weight: 600; 
+  color: var(--text-color); 
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Search Bar Styling */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  transition: border-color 0.2s;
+  margin-top: 8px;
+}
+
+.search-bar-container:focus-within {
+  border-color: var(--primary-color);
+}
+
+.search-icon {
+  color: #888;
+  margin-right: 12px;
+  margin-left: 8px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-color);
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #bbb;
+}
+
+.search-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.search-btn:hover {
+  opacity: 0.9;
+}
+
+/* Reused Grid and Card Styling */
+.notes-section { margin-bottom: 40px; }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+.note-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.note-card:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05); 
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 4px;
+  background-color: var(--primary-color);
+  border-radius: 0 4px 4px 0;
+}
+
+.card-title { font-size: 16px; color: var(--text-color); font-weight: 500; }
+.forward-icon { color: #ccc; font-size: 18px; width: 18px; height: 18px; }
+
+/* Empty/Loading States */
+.empty-state {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+}
+.search-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 60px;
+}
+.large-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #ddd;
+}
+.note-card.locked {
+  cursor: default;
+}
+.note-card.locked:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+.card-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Base button style */
+.status-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* The new Request Access button */
+.request-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+.request-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 2px 8px rgba(109, 113, 46, 0.3);
+}
+
+/* The disabled Requested state */
+.requested-btn {
+  background-color: #f0f0f0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* The Open button (for owned/shared notes) */
+.open-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.open-btn:hover {
+  background-color: var(--secondary-color);
+}

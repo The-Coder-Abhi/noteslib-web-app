@@ -1,0 +1,177 @@
+.header-action { margin-bottom: 30px; }
+.section-title { font-size: 28px; font-weight: 600; color: var(--text-color); margin: 0; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.subsection-title { font-size: 18px; font-weight: 500; color: var(--text-color); margin: 0; }
+.text-btn { background: none; border: none; color: var(--primary-color); font-weight: 500; cursor: pointer; transition: 0.2s; }
+.text-btn:hover { opacity: 0.7; }
+
+/* Grid and Cards */
+.notes-section { margin-bottom: 40px; }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+.note-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+.note-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 4px;
+  background-color: var(--primary-color);
+  border-radius: 0 4px 4px 0;
+}
+.card-content { display: flex; flex-direction: column; gap: 4px; }
+.card-title { font-size: 16px; color: var(--text-color); font-weight: 500; }
+.card-date { font-size: 12px; color: #888; }
+.forward-icon { color: #ccc; font-size: 18px; width: 18px; height: 18px; }
+
+/* Empty State */
+.empty-state { text-align: center; color: #888; margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.large-icon { font-size: 48px; width: 48px; height: 48px; color: #ddd; }
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 20px rgba(109, 113, 46, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background-color 0.2s;
+  z-index: 100;
+}
+.fab mat-icon { font-size: 28px; width: 28px; height: 28px; }
+.fab:hover { transform: scale(1.05); background-color: #5c6125; }
+
+/* Modal Dialog */
+.dialog-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+.dialog-container {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+.dialog-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dialog-header h2 { margin: 0; font-size: 20px; font-weight: 600; color: var(--text-color); }
+.close-btn { background: none; border: none; cursor: pointer; color: #888; display: flex; align-items: center; padding: 4px; border-radius: 50%; transition: 0.2s; }
+.close-btn:hover { background: #f5f5f5; color: var(--error-color); }
+
+.dialog-body { padding: 24px; overflow-y: hidden; display: flex; flex-direction: column; }
+.step-content { display: flex; flex-direction: column; max-height: 100%; }
+.step-content h3 { margin: 0 0 20px 0; color: var(--primary-color); font-size: 16px; }
+
+/* Form Elements */
+.scrollable-content { overflow-y: auto; padding-right: 8px; max-height: 50vh; }
+.form-section { background: #fafafa; padding: 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #eee; }
+.form-section h4 { margin: 0 0 12px 0; color: var(--text-color); }
+.form-section h5 { margin: 0 0 12px 0; color: #666; font-size: 13px; }
+.form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+.form-group:last-child { margin-bottom: 0; }
+.row-group { flex-direction: row; align-items: center; justify-content: space-between; }
+.form-group label { font-size: 14px; font-weight: 500; color: #555; }
+.form-input { padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--primary-color); }
+.small-input { width: 80px; text-align: center; }
+
+/* Sticky Headers for Step 4 */
+.subject-block { margin-bottom: 24px; }
+.sticky-header { position: sticky; top: 0; background: white; padding: 8px 0; z-index: 10; margin: 0 0 12px 0; border-bottom: 2px solid var(--primary-color); }
+
+/* Review Tree */
+.review-box { background: #fafafa; padding: 16px; border-radius: 8px; border: 1px solid #eee; }
+.review-title { margin: 0 0 16px 0; color: var(--primary-color); font-size: 18px; }
+.tree-view { list-style-type: none; padding-left: 0; margin: 0; font-size: 14px; }
+.tree-view ul { list-style-type: none; padding-left: 20px; border-left: 1px dashed #ccc; margin: 8px 0 8px 8px; }
+.tree-view li { margin-bottom: 8px; }
+.error-banner { background: #ffebee; color: #c62828; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+
+/* Footer Buttons */
+.dialog-footer { 
+  padding: 16px 24px; 
+  border-top: 1px solid #eee; 
+  display: flex; 
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center;
+  gap: 12px; /* Space between text and buttons */
+  background: #fafafa; 
+  border-radius: 0 0 16px 16px; 
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.step-indicator { font-size: 13px; color: #888; font-weight: 500; }
+
+.btn { 
+  flex: 1; /* Makes the buttons equal width */
+  padding: 10px 20px; 
+  border-radius: 8px; 
+  font-size: 14px; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  border: none; 
+}
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.primary-btn { background-color: var(--primary-color); color: white; }
+.primary-btn:hover:not(:disabled) { opacity: 0.9; }
+.secondary-btn { background-color: transparent; border: 1px solid #ccc; color: #555; }
+.secondary-btn:hover:not(:disabled) { background-color: #eee; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .fab { bottom: 20px; right: 20px; }
+  .dialog-container { width: 95%; max-height: 90vh; }
+}

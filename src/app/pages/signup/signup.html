@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="illustration-panel"></div>
+  <div class="form-panel">
+    <div class="signup-card" @flyInRight>
+      <div class="Header">
+        Welcome to <span class="app-name">NotesLib</span>
+        <!-- <h3>Store • Organise • Share</h3> -->
+      </div>
+      <div class="subtitle-wrapper">
+  <p class="typing-effect typing-signup">Register to store. share. organize.</p>
+</div>
+
+      @if (globalError) {
+        <div class="error-message">
+          {{ globalError }}
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="e.g. John Doe"
+          [(ngModel)]="name"
+          [disabled]="isLoading"
+        />
+        @if (nameError) {
+          <div class="error-text">
+            {{ nameError }}
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="e.g. myemail@example.com"
+          [(ngModel)]="email"
+          [disabled]="isLoading"
+        />
+        @if (emailError) {
+          <div class="error-text">
+            {{ emailError }}
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Minimum 8 characters"
+          [(ngModel)]="password"
+          [disabled]="isLoading"
+        />
+        @if (passwordError) {
+          <div class="error-text">
+            {{ passwordError }}
+          </div>
+        }
+      </div>
+
+      <button class="action-btn" (click)="onSignup()" [disabled]="isLoading">
+        {{ isLoading ? 'Creating Account...' : 'Sign Up' }}
+      </button>
+
+      <div class="login-row">
+        <span class="prompt-text">Already have an account?</span>
+        <a routerLink="/login" class="login-link">Log In</a>
+      </div>
+    </div>
+  </div>
+</div>

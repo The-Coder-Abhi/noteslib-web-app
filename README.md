@@ -1,59 +1,91 @@
-# NoteslibWebApp
+# NotesLib 📚
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+NotesLib is a comprehensive, full-stack document management web application designed for hierarchical organization of academic and professional notes. It allows users to create structured study materials, upload PDFs, securely share access with other users, and manage access requests via a real-time notification system.
 
-## Development server
+## 🚀 Key Features
 
-To start a local development server, run:
+*   **Deep Hierarchical Organization:** Structure content seamlessly through a five-level hierarchy: Notes > Subjects > Units > Chapters > PDFs.
+*   **Access Management & Sharing:** Built-in request system where users can search for locked notes, request access, and owners can approve them via a real-time notification panel.
+*   **Dynamic Document Viewing:** Integrated PDF viewer and folder navigation with breadcrumb tracking.
+*   **Smart Search:** Fast folder discovery using Appwrite Key/Fulltext indexing.
+*   **Automated Structuring:** Multi-step modal for rapidly generating bulk units and chapters without repetitive manual entry.
 
-```bash
-ng serve
+## 🛠️ Tech Stack
+
+**Frontend:**
+*   Angular (Standalone Components)
+*   TypeScript, HTML, CSS (Custom Olive Green Design System)
+*   Angular Router & Route Guards
+
+**Backend (Appwrite):**
+*   **Authentication:** Session-based user identity management.
+*   **Database:** Structured collections for Notes, Subjects, Units, Chapters, and Users.
+*   **Storage:** Secure bucket storage for PDF document uploads.
+
+## 📸 Screenshots
+
+### Home Dashboard & Notifications
+![Home Dashboard](src/app/assets/Screen-Shots/Home-Page.png)
+
+### Search & Request Access
+![Search Notes](src/app/assets/Screen-Shots/Search-Page.png)
+
+### Add Notes Page
+![Add Notes](src/app/assets/Screen-Shots/Add-Notes-Page.png)
+
+### Multi-Step Folder Creation
+![Create Note 1](src/app/assets/Screen-Shots/Create-Note-1-of-5.png)
+
+![Create Note 2](src/app/assets/Screen-Shots/Create-Note-2-of-5.png)
+
+![Create Note 3](src/app/assets/Screen-Shots/Create-Note-3-of-5.png)
+
+![Create Note 4](src/app/assets/Screen-Shots/Create-Note-4-of-5.png)
+
+![Create Note 5](src/app/assets/Screen-Shots/Create-Note-5-of-5.png)
+
+### PDF Viewer & Upload
+![PDF Viewer](src/app/assets/Screen-Shots/PDF-View.png)
+
+### Login Screen
+![Login Screen](src/app/assets/Screen-Shots/Login-Screen.png)
+
+### SignUp Screen
+![SignUp Screen](src/app/assets/Screen-Shots/SignUp-Screen.png)
+
+### Verify Screen
+![Verify Screen](src/app/assets/Screen-Shots/Verify-Screen.png)
+
+### Verify Success
+![Verify Success](src/app/assets/Screen-Shots/verification-success.png)
+
+## ⚙️ Local Setup & Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/yourusername/noteslib-web-app.git](https://github.com/yourusername/noteslib-web-app.git)
+   cd noteslib-web-app
+
+2. Install dependencies:
+   ```bash
+   npm install
+
+3. Configure Appwrite Environment:
+   Update your src/environments/environment.ts with your Appwrite endpoint, Project ID, Database ID, and Collection IDs.
+
+4. Run the development server:
+   ```bash
+   ng serve
+
+   Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+
+## 🚢 Deployment
+This project is configured for deployment via GitHub Pages using the Angular CLI.
+To build and deploy a live version:
+ ```bash
+   ng deploy --base-href=/noteslib-web-app/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 👨‍💻 Author
+Abhishek Shelar
+B.Sc. IT Graduate & Full-Stack Software Developer

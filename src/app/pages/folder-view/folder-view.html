@@ -1,0 +1,35 @@
+<div class="header-action">
+    <button class="back-btn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>Back
+    </button>
+</div>
+
+@if (isLoading) {
+    <div class="loading-state">Loading {{currentTitle}}...</div>
+}@else {
+    <div class="notes-section">
+        <h2 class="section-title">{{currentTitle}}</h2>
+
+        @if (breadcrumb.length > 0) {
+      <div class="breadcrumb">
+        @for (step of breadcrumb; track $index; let last = $last) {
+          <span [class.active-step]="last">{{ step }}</span>
+          @if (!last) { <span class="separator"> / </span> }
+        }
+      </div>
+    }
+
+        <div class="grid-container">
+            @for (item of items; track item.$id) {
+                <div class="note-card" (click)="openFolder(item)">
+                    <span class="card-title">{{item.name}}</span>
+                    <button class="delete-btn" (click)="deleteItem(item, $event)" aria-label="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            }@empty {
+                <p class="empty-state">No {{ currentTitle | lowercase}} found in this folder.</p>
+            }
+        </div>
+    </div>
+}

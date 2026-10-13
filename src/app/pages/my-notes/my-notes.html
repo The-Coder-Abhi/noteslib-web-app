@@ -1,0 +1,31 @@
+@if(isLoading){
+    <div class="loading-state">Loading notes...</div>
+} @else {
+    <div class="notes-section">
+        <h2 class="section-title">My Notes Folders</h2>
+        <div class="grid-container">
+            @for(note of myNotes; track note.$id){
+                <div class="note-card" (click)="openNote(note)" style="cursor: pointer;">
+                    <span class="card-title">{{note.name}}</span>
+                    <button class="delete-btn" (click)="deleteNote(note.$id, $event)" aria-label="Delete note"><mat-icon>delete</mat-icon></button>
+                </div>
+            }@empty {
+                <p class="empty-state">You haven't created any folders yet.</p>
+            }
+        </div>
+    </div>
+
+    <div class="notes-section">
+        <h2 class="section-title">Shared With Me</h2>
+        <div class="grid-container">
+
+            @for(sharedNote of sharedNotes; track sharedNote.$id) {
+                <div class="note-card shared" (click)="openNote(sharedNote)" style="cursor: pointer;">
+                    <span class="card-title">{{sharedNote.name}}</span>
+                </div>
+            }@empty {
+                <p class="empty-state">No notes shared with you.</p>
+            }
+        </div>
+    </div>
+}

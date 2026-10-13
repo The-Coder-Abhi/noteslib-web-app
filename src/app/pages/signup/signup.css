@@ -1,0 +1,196 @@
+.container {
+  display: flex;
+  /* flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  width: 100%;
+}
+.illustration-panel {
+  padding: 20px;
+  flex: 1; /* Takes up 50% width */
+  /* Point this path to where you saved the left-side image in your assets */
+  background: url('../../../assets/img/noteslib-illustration-half.png') no-repeat center center;
+  background-size: cover;
+  
+  /* Hide the image on mobile devices, stack the form instead */
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.form-panel {
+  flex: 1; /* Takes up remaining 50% width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  /* border: 1px solid red; */
+}
+.signup-card{
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  border-radius: 16px;
+  background-color: var(--secondary-color); /* Secondary_color */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.subtitle-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.typing-effect {
+  overflow: hidden; 
+  white-space: nowrap; 
+  border-right: 2px solid transparent; 
+  font-size: 14px;
+  color: #666;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  width: max-content;
+}
+
+/* --- Sign Up Animation (35 characters) --- */
+.typing-signup {
+  animation: 
+    type-signup 2s steps(26, end) forwards,
+    blink 0.75s step-end 4;
+}
+
+@keyframes type-signup {
+  from { width: 0; }
+  to { width: 26ch; } /* 26ch equals exactly 26 characters wide */
+}
+
+/* Flashing cursor effect */
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary-color); }
+}
+.form-group {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5; /* Replace with your Secondary_color hex */
+  color: #333;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+input:hover {
+  background-color: #ebebeb; /* Slightly darker than your #f5f5f5 */
+  border-color: #bbb;
+}
+input:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+.action-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  /* margin-top: 15px; */
+  border: none;
+  border-radius: 24px;
+  background-color: var(--primary-color); /* Primary_color */
+  color: white;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.action-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05); /* Lightens the olive slightly */
+  box-shadow: 0 6px 16px rgba(107, 112, 49, 0.25); /* Soft olive shadow */
+}
+.action-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(107, 112, 49, 0.15);
+}
+.login-row {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 10px;
+}
+.prompt-text{
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+}
+.login-link {
+  font-size: 18px; 
+  font-family: 'Inter', sans-serif;
+  color: var(--primary-color); 
+  text-decoration: none;
+  font-weight: bold;
+}
+.error-message {
+  /* color: white;
+  background-color: red;  */
+  background-color: #fee2e2; /* Error_color */
+  color: #b91c1c; /* Error_color */
+  padding: 10px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+.error-text {
+  color: var(--error-color); /* Error_color */
+  font-size: 16px;
+  margin-top: 8px;
+  color: #b91c1c;
+  font-family: 'Inter', sans-serif;
+}
+.Header {
+  /* padding: 0 10px; */
+  max-width: 400px;
+  /* border: 1px solid red; */
+  font-size: 32px;
+  font-family: 'Inter', sans-serif;
+  color: #333; /* Primary_color */
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.Header .app-name {
+  font-size: 64px;
+  color: var(--primary-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+/* .Header h3 {
+    font-size: 24px;
+  color: #444;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  text-align: center;
+} */

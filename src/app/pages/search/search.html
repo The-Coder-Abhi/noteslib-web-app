@@ -1,0 +1,59 @@
+<div class="search-header">
+  <h2 class="search-title">Search Notes</h2>
+  <div class="search-bar-container">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search by subject name (e.g. Data Structures)..."
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+    />
+    <button class="search-btn" (click)="onSearch()">Search</button>
+  </div>
+</div>
+
+<div class="notes-section">
+  @if (isSearching) {
+    <div class="loading-state">Searching your notes...</div>
+  } @else if (hasSearched && searchResults.length === 0) {
+    <p class="empty-state">No folders found containing the subject "{{ searchQuery }}".</p>
+  } @else if (hasSearched && searchResults.length > 0) {
+    <div class="grid-container">
+      @for (note of searchResults; track note.$id) {
+        <!-- Only allow clicking the whole card if they have access -->
+        <div
+          class="note-card"
+          (click)="hasAccess(note) ? openNote(note) : null"
+          [class.locked]="!hasAccess(note)"
+        >
+          <span class="card-title">{{ note.name }}</span>
+
+          <div class="card-actions">
+            @if (hasAccess(note)) {
+              <!-- They own it or are allowed -->
+              <button class="status-btn open-btn" (click)="openNote(note)">Open</button>
+            } @else if (hasRequested(note)) {
+              <!-- Request is pending -->
+              <button class="status-btn requested-btn" disabled>Requested</button>
+            } @else {
+              <!-- Locked, needs request -->
+              <button
+                class="status-btn request-btn"
+                (click)="sendRequest(note, $event)"
+                [disabled]="requestingStates[note.$id]"
+              >
+                {{ requestingStates[note.$id] ? 'Sending...' : 'Request Access' }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state search-placeholder">
+      <mat-icon class="large-icon">manage_search</mat-icon>
+      <p>Enter a subject name above to find its parent folder.</p>
+    </div>
+  }
+</div>
