@@ -172,6 +172,6 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .fab { bottom: 20px; right: 20px; }
+  .fab { bottom: 90px; right: 20px; }
   .dialog-container { width: 95%; max-height: 90vh; }
 }

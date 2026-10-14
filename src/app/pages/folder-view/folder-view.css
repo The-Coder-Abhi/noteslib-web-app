@@ -157,7 +157,7 @@
 /* Mobile Responsiveness for FAB */
 @media (max-width: 768px) {
   .fab { 
-    bottom: 20px; 
+    bottom: 90px; 
     right: 20px; 
   }
 }

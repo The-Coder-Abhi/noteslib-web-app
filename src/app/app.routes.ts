@@ -3,10 +3,6 @@ import { Login } from './pages/login/login';
 import { Signup } from './pages/signup/signup';
 import { Verify } from './pages/verify/verify';
 import { Home } from './pages/home/home';
-import { Subject } from './pages/subject/subject';
-import { Unit } from './pages/unit/unit';
-import { Chapter } from './pages/chapter/chapter';
-import { Pdf } from './pages/pdf/pdf';
 import { MyNotes } from './pages/my-notes/my-notes';
 import { Search } from './pages/search/search';
 import { AddNote } from './pages/add-note/add-note';
@@ -47,9 +43,5 @@ export const routes: Routes = [
         component: AddNote,
       },
     ],
-  },
-  { path: 'subject/:noteId', component: Subject },
-  { path: 'unit/:noteId/:subjectId', component: Unit },
-  { path: 'chapter/:noteId/:subjectId/:unitId', component: Chapter },
-  { path: 'pdf/:noteId/:subjectId/:unitId/:chapterId', component: Pdf },
+  }
 ];

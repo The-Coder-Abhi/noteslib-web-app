@@ -40,6 +40,10 @@
   font-size: 16px;
   color: var(--text-color);
   background: transparent;
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 12px;
 }
 
 .search-input::placeholder {
@@ -56,6 +60,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: opacity 0.2s;
+  flex-shrink: 0;
 }
 
 .search-btn:hover {
